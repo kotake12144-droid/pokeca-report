@@ -2,6 +2,7 @@ name: Daily Pokemon Scan
 
 on:
   schedule:
+    - cron: '0 0 * * *'  # 毎日 09:00 JST
     - cron: '0 8 * * *'  # 毎日 17:00 JST
   workflow_dispatch:
 
