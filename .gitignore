@@ -1,9 +1,7 @@
-# 環境変数（Webhook URLなど）
 .env
-
-# デバッグ用画像
 *.png
-
-# Python
+debug*.png
 __pycache__/
 *.pyc
+.DS_Store
+ebay_sold_*.csv
