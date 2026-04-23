@@ -1,0 +1,88 @@
+name: Daily Pokemon Scan
+
+on:
+  schedule:
+    - cron: '0 7 * * *'  # 毎日 16:00 JST
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+          playwright install-deps chromium
+
+      - name: Create .env
+        run: echo "DISCORD_WEBHOOK=${{ secrets.DISCORD_WEBHOOK }}" > .env
+
+      - name: 1/5 pokeca_scan
+        timeout-minutes: 10
+        run: python pokeca_scan.py
+
+      - name: 2/5 snkrdunk_inventory
+        timeout-minutes: 5
+        continue-on-error: true
+        run: python snkrdunk_inventory.py
+
+      - name: 3/5 sync_from_sheets
+        timeout-minutes: 2
+        continue-on-error: true
+        run: python sync_from_sheets.py
+
+      - name: 4/5 report_html
+        timeout-minutes: 2
+        run: python report_html.py
+
+      - name: 5/5 build_site
+        timeout-minutes: 2
+        run: python build_site.py
+
+      - name: Commit and push docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/ *.csv pokeca.log
+          git diff --staged --quiet || git commit -m "daily update: $(date +'%Y-%m-%d')"
+          git push
+
+      - name: Deploy to Vercel
+        run: |
+          npm i -g vercel
+          cd docs && vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: team_KXuL2HKNxi2SyEZaQNzPskFB
+          VERCEL_PROJECT_ID: prj_BNuBOYDyenvNnDMdJk9KnnSLCmna
+
+      - name: Discord通知（レポートURL）
+        run: |
+          TOKEN=$(cat docs/current_token.txt 2>/dev/null || echo "")
+          DATE=$(date +'%Y-%m-%d')
+          REPORT_URL="https://pokeca-report.vercel.app/r/${TOKEN}/"
+          curl -s -X POST "${{ secrets.DISCORD_WEBHOOK_REPORT }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"content\": \"📊 **ポケカ PSA投資レポート更新** ($DATE)\n🔗 本日のレポート: ${REPORT_URL}\n📈 推移グラフ: https://pokeca-report.vercel.app/trends.html\"}"
+
+      - name: Discord通知（エラーアラート）
+        if: failure()
+        run: |
+          curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"content\": \"⚠️ **pokeca daily pipeline 失敗** ($(date +'%Y-%m-%d'))\nhttps://github.com/${{ github.repository }}/actions\"}"
