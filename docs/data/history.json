@@ -1225,11 +1225,11 @@
         "mint": 3320,
         "psa10": 26108,
         "diff": 22788,
-        "a_count": null,
-        "a_count_all": null,
-        "psa10_count": null,
-        "psa10_count_all": null,
-        "total": 41
+        "a_count": 11,
+        "a_count_all": 297,
+        "psa10_count": 25,
+        "psa10_count_all": 863,
+        "total": 59
       },
       {
         "name": "ナンジャモのハラバリーex [M2a 236/193]",
