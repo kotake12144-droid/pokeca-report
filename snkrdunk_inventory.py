@@ -29,6 +29,20 @@ def load_fallback_ids():
 SNKRDUNK_ID_FALLBACK = load_fallback_ids()
 
 
+def save_fallback_id(slug: str, snkrdunk_id: str, name: str):
+    """新たに発見したIDをfallback_ids.csvに追記"""
+    import os
+    path = os.path.join(os.path.dirname(__file__), "fallback_ids.csv")
+    existing = load_fallback_ids()
+    if slug in existing:
+        return
+    with open(path, "a", newline="", encoding="utf-8") as f:
+        writer = csv_mod.writer(f)
+        writer.writerow([slug, snkrdunk_id, name])
+    SNKRDUNK_ID_FALLBACK[slug] = snkrdunk_id
+    print(f"    → fallback_ids.csvに保存: {slug} = {snkrdunk_id}")
+
+
 def parse_price(text: str):
     nums = re.sub(r"[^\d]", "", text)
     return int(nums) if nums else None
@@ -104,7 +118,62 @@ async def get_card_detail(page, url: str) -> dict:
         "mint_price": mint_price,
         "psa10_price": psa10_price,
         "snkrdunk_id": snkrdunk_id,
+        "slug": card_slug,
     }
+
+
+
+def search_snkrdunk_id(name: str, slug: str):
+    """
+    1. slugからproductNumberを構築してSnkrdunk APIで検索
+    2. 見つからない場合はDuckDuckGoで「スニダン {name}」を検索してIDを取得
+    """
+    headers_api = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+        "Accept": "application/json, text/plain, */*",
+    }
+
+    # --- Step 1: productNumber検索 ---
+    if slug:
+        parts = slug.split("-")
+        if len(parts) >= 3:
+            num = parts[-2]
+            set_code = "-".join(parts[:-2])
+            product_num = f"pkmn-tcg-{set_code}-{num}"
+            try:
+                resp = requests.get(
+                    "https://snkrdunk.com/v1/apparels",
+                    params={"productNumber": product_num},
+                    headers=headers_api,
+                    timeout=8,
+                )
+                if resp.status_code == 200:
+                    items = resp.json().get("apparels", [])
+                    if items:
+                        cid = str(items[0]["id"])
+                        print(f"    productNumber検索「{product_num}」→ id={cid}")
+                        return cid
+            except Exception as e:
+                print(f"    productNumber検索エラー: {e}")
+
+    # --- Step 2: DuckDuckGo検索フォールバック ---
+    try:
+        query = f"スニダン {name}"
+        ddg_url = f"https://html.duckduckgo.com/html/?q={requests.utils.quote(query)}"
+        headers_web = {
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept-Language": "ja-JP,ja;q=0.9",
+        }
+        resp = requests.get(ddg_url, headers=headers_web, timeout=10)
+        ids = list(dict.fromkeys(re.findall(r"snkrdunk\.com/apparels/(\d+)", resp.text)))
+        if ids:
+            cid = ids[0]
+            print(f"    DuckDuckGo検索「{query}」→ id={cid}")
+            return cid
+    except Exception as e:
+        print(f"    DuckDuckGo検索エラー: {e}")
+
+    return None
 
 
 def _fetch_inventory(apparel_id: str, sale_only: bool) -> tuple[int, int]:
@@ -247,6 +316,15 @@ async def main():
         print(f"[2/3] 各カードの価格・SnkrdunkID取得中...")
         for i, card in enumerate(card_links, 1):
             detail = await get_card_detail(page, card["url"])
+
+            # IDが見つからない場合はSnkrdunkを直接検索
+            if not detail.get("snkrdunk_id"):
+                print(f"  {i:>2}位 {detail['name'][:32]:<32} IDなし → Snkrdunk検索中...")
+                found_id = search_snkrdunk_id(detail["name"], detail.get("slug", ""))
+                if found_id:
+                    detail["snkrdunk_id"] = found_id
+                    save_fallback_id(detail.get("slug", ""), found_id, detail["name"])
+
             card.update(detail)
             sid = detail.get("snkrdunk_id") or "IDなし"
             mint = detail.get("mint_price")
@@ -269,6 +347,58 @@ async def main():
         except Exception as e:
             card["a_count"] = None
             card["psa10_count"] = None
+
+    # [補完] 投資効率TOP30 / 総合スコアTOP30 で在庫未取得のカードを再検索
+    def _roi(c):
+        m, p = c.get("mint_price"), c.get("psa10_price")
+        if not m or not p: return -999
+        return (p - m - GRADING_COST) / (m + GRADING_COST)
+
+    roi_top30 = sorted(
+        [c for c in card_links if c.get("mint_price") and c.get("psa10_price")],
+        key=_roi, reverse=True
+    )[:30]
+
+    for c in card_links:
+        c["score"] = calc_score(c.get("mint_price"), c.get("psa10_price"),
+                                c.get("a_count"), c.get("psa10_count"))
+    score_top30 = sorted([c for c in card_links if c["score"] >= 0],
+                         key=lambda x: x["score"], reverse=True)[:30]
+
+    top30_ids = {id(c) for c in roi_top30} | {id(c) for c in score_top30}
+    top30_missing = [c for c in card_links if id(c) in top30_ids and c.get("a_count") is None]
+
+    if top30_missing:
+        print(f"\n[補完] TOP30カードで在庫未取得: {len(top30_missing)}件 → 再検索")
+        for card in top30_missing:
+            name = card["name"]
+            # 複数クエリで再試行
+            found_id = None
+            for query_name in [name, name.split("[")[0].strip()]:
+                try:
+                    q = f"スニダン {query_name}"
+                    ddg_url = f"https://html.duckduckgo.com/html/?q={requests.utils.quote(q)}"
+                    resp = requests.get(ddg_url, headers={
+                        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+                        "Accept-Language": "ja-JP,ja;q=0.9",
+                    }, timeout=10)
+                    ids = list(dict.fromkeys(re.findall(r"snkrdunk\.com/apparels/(\d+)", resp.text)))
+                    if ids:
+                        found_id = ids[0]
+                        break
+                except Exception:
+                    pass
+            if found_id:
+                card["snkrdunk_id"] = found_id
+                save_fallback_id(card.get("slug", ""), found_id, name)
+                try:
+                    inv = get_snkrdunk_inventory(found_id)
+                    card.update(inv)
+                    print(f"  ✓ {name[:35]}: A={inv['a_count']} PSA10={inv['psa10_count']}")
+                except Exception:
+                    print(f"  ✓ {name[:35]}: ID取得済み・在庫取得失敗")
+            else:
+                print(f"  ✗ {name[:35]}: 取得不可（手動追加が必要）")
 
     # 結果表示
     print(f"\n{'='*90}")
