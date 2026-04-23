@@ -66,7 +66,11 @@ jobs:
       - name: Deploy to Vercel
         run: |
           npm i -g vercel
-          cd docs && vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+          cd docs
+          DEPLOY_URL=$(vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }} 2>&1 | grep -o 'https://docs-[^[:space:]]*\.vercel\.app' | head -1)
+          if [ -n "$DEPLOY_URL" ]; then
+            vercel alias set "$DEPLOY_URL" pokeca-report.vercel.app --token=${{ secrets.VERCEL_TOKEN }}
+          fi
         env:
           VERCEL_ORG_ID: team_KXuL2HKNxi2SyEZaQNzPskFB
           VERCEL_PROJECT_ID: prj_BNuBOYDyenvNnDMdJk9KnnSLCmna
