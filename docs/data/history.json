@@ -1237,11 +1237,11 @@
         "mint": 5700,
         "psa10": 24000,
         "diff": 18300,
-        "a_count": null,
-        "a_count_all": null,
-        "psa10_count": null,
-        "psa10_count_all": null,
-        "total": 35
+        "a_count": 36,
+        "a_count_all": 466,
+        "psa10_count": 15,
+        "psa10_count_all": 253,
+        "total": 48
       },
       {
         "name": "ミュウツー [SV2a 183/165]",
@@ -1273,11 +1273,11 @@
         "mint": 2811,
         "psa10": 20780,
         "diff": 17969,
-        "a_count": null,
-        "a_count_all": null,
-        "psa10_count": null,
-        "psa10_count_all": null,
-        "total": 31
+        "a_count": 10,
+        "a_count_all": 262,
+        "psa10_count": 12,
+        "psa10_count_all": 270,
+        "total": 52
       },
       {
         "name": "エリカの招待 [SV2a 196/165]",
