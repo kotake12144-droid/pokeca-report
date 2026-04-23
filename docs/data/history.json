@@ -985,11 +985,11 @@
         "mint": 65000,
         "psa10": 264000,
         "diff": 199000,
-        "a_count": null,
-        "a_count_all": null,
-        "psa10_count": null,
-        "psa10_count_all": null,
-        "total": 62
+        "a_count": 4,
+        "a_count_all": 33,
+        "psa10_count": 38,
+        "psa10_count_all": 325,
+        "total": 87
       },
       {
         "name": "ミュウVMAX [s8 119/100]",
@@ -997,11 +997,11 @@
         "mint": 119472,
         "psa10": 302472,
         "diff": 183000,
-        "a_count": null,
-        "a_count_all": null,
-        "psa10_count": null,
-        "psa10_count_all": null,
-        "total": 58
+        "a_count": 4,
+        "a_count_all": 214,
+        "psa10_count": 75,
+        "psa10_count_all": 1510,
+        "total": 75
       },
       {
         "name": "メガカイリューex [M2a 250/193]",
@@ -1129,11 +1129,11 @@
         "mint": 24000,
         "psa10": 55000,
         "diff": 31000,
-        "a_count": null,
-        "a_count_all": null,
-        "psa10_count": null,
-        "psa10_count_all": null,
-        "total": 47
+        "a_count": 2,
+        "a_count_all": 39,
+        "psa10_count": 25,
+        "psa10_count_all": 339,
+        "total": 72
       },
       {
         "name": "ミュウツー [CLK 014/032]",
@@ -1213,11 +1213,11 @@
         "mint": 5999,
         "psa10": 30300,
         "diff": 24301,
-        "a_count": null,
-        "a_count_all": null,
-        "psa10_count": null,
-        "psa10_count_all": null,
-        "total": 41
+        "a_count": 7,
+        "a_count_all": 342,
+        "psa10_count": 22,
+        "psa10_count_all": 447,
+        "total": 62
       },
       {
         "name": "ルカリオVSTAR [S12a 226/172]",
@@ -1285,11 +1285,11 @@
         "mint": 2999,
         "psa10": 18500,
         "diff": 15501,
-        "a_count": null,
-        "a_count_all": null,
-        "psa10_count": null,
-        "psa10_count_all": null,
-        "total": 31
+        "a_count": 38,
+        "a_count_all": 1211,
+        "psa10_count": 32,
+        "psa10_count_all": 959,
+        "total": 41
       },
       {
         "name": "リザードンex [SV4a 331/190]",
@@ -1309,11 +1309,11 @@
         "mint": 4100,
         "psa10": 18900,
         "diff": 14800,
-        "a_count": null,
-        "a_count_all": null,
-        "psa10_count": null,
-        "psa10_count_all": null,
-        "total": 30
+        "a_count": 47,
+        "a_count_all": 607,
+        "psa10_count": 36,
+        "psa10_count_all": 914,
+        "total": 40
       },
       {
         "name": "ガラル ファイヤーV [S8b 242/184]",
@@ -1333,11 +1333,11 @@
         "mint": 9000,
         "psa10": 21700,
         "diff": 12700,
-        "a_count": null,
-        "a_count_all": null,
-        "psa10_count": null,
-        "psa10_count_all": null,
-        "total": 30
+        "a_count": 9,
+        "a_count_all": 107,
+        "psa10_count": 30,
+        "psa10_count_all": 854,
+        "total": 48
       },
       {
         "name": "かがやくフシギバナ [s10b 004/071]",
@@ -1369,11 +1369,11 @@
         "mint": 5019,
         "psa10": 17000,
         "diff": 11981,
-        "a_count": null,
-        "a_count_all": null,
-        "psa10_count": null,
-        "psa10_count_all": null,
-        "total": 20
+        "a_count": 36,
+        "a_count_all": 915,
+        "psa10_count": 80,
+        "psa10_count_all": 1756,
+        "total": 25
       },
       {
         "name": "ドラピオンV [S12a 227/172]",
@@ -1381,11 +1381,11 @@
         "mint": 595,
         "psa10": 6500,
         "diff": 5905,
-        "a_count": null,
-        "a_count_all": null,
-        "psa10_count": null,
-        "psa10_count_all": null,
-        "total": 17
+        "a_count": 5,
+        "a_count_all": 7,
+        "psa10_count": 3,
+        "psa10_count_all": 19,
+        "total": 31
       },
       {
         "name": "タロ [sv8a 231/187]",
