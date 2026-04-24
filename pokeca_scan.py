@@ -169,7 +169,7 @@ def notify_discord(sortable: list[dict], total: int):
     """Discord Webhookに結果を送る"""
     import requests
 
-    if not sortable:
+    if not sortable or not DISCORD_WEBHOOK:
         return
 
     today = datetime.now().strftime("%Y/%m/%d %H:%M")
