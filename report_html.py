@@ -44,6 +44,8 @@ def load_pokeca():
 
 
 def load_inventory():
+    if not os.path.exists("snkrdunk_inventory.json"):
+        return {}
     with open("snkrdunk_inventory.json", encoding="utf-8") as f:
         items = json.load(f)
     inv = {}

@@ -335,7 +335,7 @@ async def main():
         await browser.close()
 
     print(f"\n[3/3] Snkrdunk在庫数確認中...")
-    for card in card_links:
+    for i, card in enumerate(card_links, 1):
         sid = card.get("snkrdunk_id")
         if not sid:
             card["a_count"] = None
@@ -347,6 +347,10 @@ async def main():
         except Exception as e:
             card["a_count"] = None
             card["psa10_count"] = None
+        # 10件ごとに途中保存（タイムアウト対策）
+        if i % 10 == 0:
+            with open("snkrdunk_inventory.json", "w", encoding="utf-8") as f:
+                json.dump(card_links, f, ensure_ascii=False, indent=2)
 
     # [補完] 投資効率TOP30 / 総合スコアTOP30 で在庫未取得のカードを再検索
     def _roi(c):
