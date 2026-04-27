@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 
-import csv, json, glob, os, shutil, datetime
+import csv, json, glob, os, shutil, datetime, secrets
 
-BASE_DIR  = "/Users/k.k/Desktop/ebay"
+BASE_DIR  = os.path.dirname(os.path.abspath(__file__))
 DOCS_DIR  = os.path.join(BASE_DIR, "docs")
 ARCH_DIR  = os.path.join(DOCS_DIR, "archive")
 DATA_DIR  = os.path.join(DOCS_DIR, "data")
 GRADING   = 12_000
 
 TODAY = datetime.date.today().strftime("%Y-%m-%d")
+TOKEN = secrets.token_hex(4)  # 例: "a7f3k2c9"
 
 
 def score_diff(diff):
@@ -179,7 +180,7 @@ def generate_archive_index(history):
 <body>
   <h1>レポートアーカイブ</h1>
   <nav>
-    <a href="../index.html">← 最新レポート</a>
+    <a href="../r/latest/">← 最新レポート</a>
     <a href="../trends.html">推移グラフ</a>
   </nav>
   <ul>
@@ -192,11 +193,9 @@ def generate_archive_index(history):
 
 
 NAV_HTML = """<div style="font-size:13px;color:#555;margin-bottom:20px;">
-  <a href="index.html" style="color:#1a56db;text-decoration:none;">← 最新レポート</a>
+  <a href="../../archive/index.html" style="color:#1a56db;text-decoration:none;">アーカイブ</a>
   &nbsp;|&nbsp;
-  <a href="archive/index.html" style="color:#1a56db;text-decoration:none;">アーカイブ</a>
-  &nbsp;|&nbsp;
-  <a href="trends.html" style="color:#1a56db;text-decoration:none;">推移グラフ</a>
+  <a href="../../trends.html" style="color:#1a56db;text-decoration:none;">推移グラフ</a>
 </div>"""
 
 
@@ -282,7 +281,7 @@ def generate_trends_html(history):
   <h1>ポケカ PSA10 価格推移グラフ</h1>
   <div class="subtitle">過去データの推移を可視化</div>
   <nav>
-    <a href="index.html">← 最新レポート</a>
+    <a href="r/latest/">← 最新レポート</a>
     <a href="archive/index.html">アーカイブ</a>
     <span style="color:#111;font-weight:600;">推移グラフ</span>
   </nav>
@@ -479,22 +478,106 @@ def generate_trends_html(history):
         f.write(html)
 
 
+LANDING_HTML = """<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8"><title>ポケカPSA投資レポート</title>
+<style>body{font-family:sans-serif;text-align:center;padding:80px 20px;color:#555;}
+h1{font-size:1.2em;margin-bottom:16px;}</style></head>
+<body><h1>ポケカ PSA投資レポート</h1>
+<p>最新レポートのURLはDiscordでご確認ください。</p>
+</body></html>"""
+
+
+TOKEN_MAP_PATH = os.path.join(DOCS_DIR, "r", "tokens.json")
+KEEP_DAYS = 5
+
+
+def cleanup_old_tokens():
+    """5日より古い・tokens.json未記録のトークンフォルダを削除する"""
+    r_dir = os.path.join(DOCS_DIR, "r")
+    token_map = {}
+    if os.path.exists(TOKEN_MAP_PATH):
+        with open(TOKEN_MAP_PATH, encoding="utf-8") as f:
+            token_map = json.load(f)
+
+    # 有効トークンのセット（直近5日分）
+    cutoff = (datetime.date.today() - datetime.timedelta(days=KEEP_DAYS)).isoformat()
+    valid_tokens = {tok for date, tok in token_map.items() if date >= cutoff}
+    valid_tokens.add("latest")
+
+    # 期限切れをtoken_mapから削除
+    expired_dates = [d for d in list(token_map) if d < cutoff]
+    for date in expired_dates:
+        del token_map[date]
+
+    # docs/r/ 内の全フォルダをチェック → 有効でないものは削除
+    if os.path.exists(r_dir):
+        for name in os.listdir(r_dir):
+            if name in ("tokens.json",):
+                continue
+            if name not in valid_tokens:
+                folder = os.path.join(r_dir, name)
+                if os.path.isdir(folder):
+                    shutil.rmtree(folder)
+                    print(f"✓ 削除: docs/r/{name}/")
+
+    with open(TOKEN_MAP_PATH, "w", encoding="utf-8") as f:
+        json.dump(token_map, f, ensure_ascii=False, indent=2)
+
+
+def save_token_map():
+    """今日のトークンをマップに記録"""
+    os.makedirs(os.path.join(DOCS_DIR, "r"), exist_ok=True)
+    token_map = {}
+    if os.path.exists(TOKEN_MAP_PATH):
+        with open(TOKEN_MAP_PATH, encoding="utf-8") as f:
+            token_map = json.load(f)
+    token_map[TODAY] = TOKEN
+    with open(TOKEN_MAP_PATH, "w", encoding="utf-8") as f:
+        json.dump(token_map, f, ensure_ascii=False, indent=2)
+
+
 def main():
     os.makedirs(DOCS_DIR, exist_ok=True)
     os.makedirs(ARCH_DIR, exist_ok=True)
     os.makedirs(DATA_DIR, exist_ok=True)
 
+    # 5日より古いトークンフォルダを削除
+    cleanup_old_tokens()
+    save_token_map()
+
+    # トップページはランディングページに（直接アクセス不可）
+    with open(os.path.join(DOCS_DIR, "index.html"), "w", encoding="utf-8") as f:
+        f.write(LANDING_HTML)
+
+    # 今日のレポートはランダムトークンフォルダへ
+    token_dir = os.path.join(DOCS_DIR, "r", TOKEN)
+    os.makedirs(token_dir, exist_ok=True)
+
     src = os.path.join(BASE_DIR, "report.html")
     with open(src, encoding="utf-8") as f:
         report_content = f.read()
-
     navified = inject_nav(report_content)
 
-    with open(os.path.join(DOCS_DIR, "index.html"), "w", encoding="utf-8") as f:
+    with open(os.path.join(token_dir, "index.html"), "w", encoding="utf-8") as f:
         f.write(navified)
 
+    # アーカイブにも保存
     with open(os.path.join(ARCH_DIR, f"{TODAY}.html"), "w", encoding="utf-8") as f:
         f.write(navified)
+
+    # トークンをファイルに保存（push_to_github.sh が読む）
+    with open(os.path.join(DOCS_DIR, "current_token.txt"), "w") as f:
+        f.write(TOKEN)
+
+    # /r/latest/ → 今日のトークンURLにリダイレクト
+    latest_dir = os.path.join(DOCS_DIR, "r", "latest")
+    os.makedirs(latest_dir, exist_ok=True)
+    with open(os.path.join(latest_dir, "index.html"), "w", encoding="utf-8") as f:
+        f.write(f"""<!DOCTYPE html><html><head><meta charset="UTF-8">
+<meta http-equiv="refresh" content="0;url=/r/{TOKEN}/">
+<script>location.replace("/r/{TOKEN}/")</script>
+</head><body></body></html>""")
 
     records = build_records()
     history = update_history(records)
@@ -502,11 +585,10 @@ def main():
     generate_archive_index(history)
     generate_trends_html(history)
 
-    print(f"docs/index.html updated")
+    print(f"docs/r/{TOKEN}/index.html created")
     print(f"docs/archive/{TODAY}.html created")
     print(f"docs/data/history.json updated ({len(history)} days)")
-    print(f"docs/archive/index.html generated")
-    print(f"docs/trends.html generated")
+    print(f"TOKEN={TOKEN}")
 
 
 if __name__ == "__main__":
