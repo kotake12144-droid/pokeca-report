@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ポケカPSA10投資レポート 2026年05月03日</title>
+  <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: #fff;
+    color: #111;
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    padding: 20px 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+h1 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+}
+.subtitle {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 20px;
+}
+.section {
+    margin-bottom: 40px;
+}
+.section-title {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 12px;
+    background: #111;
+    color: #fff;
+    margin-bottom: 0;
+    letter-spacing: 0.03em;
+}
+.section-note {
+    font-size: 11px;
+    color: #555;
+    padding: 5px 12px 8px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+.table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 680px;
+}
+thead th {
+    background: #f5f5f5;
+    font-weight: 600;
+    font-size: 11px;
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 2px solid #111;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+}
+tbody tr {
+    border-bottom: 1px solid #e8e8e8;
+}
+tbody tr:active {
+    background: #f0f0f0;
+}
+tbody td {
+    padding: 10px 10px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.rank { font-weight: 700; color: #111; width: 32px; }
+.top3 td { background: #fffdf0; }
+.name { font-weight: 600; white-space: normal; line-height: 1.5; min-width: 160px; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+.roi-pos { color: #1a6e2e; font-weight: 700; }
+.roi-neg { color: #b91c1c; }
+.score-total { font-weight: 700; font-size: 15px; }
+.score-cell { font-size: 11px; color: #555; }
+small { font-size: 10px; color: #999; }
+.medal-1::before { content: "🥇 "; }
+.medal-2::before { content: "🥈 "; }
+.medal-3::before { content: "🥉 "; }
+.criteria {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 36px;
+}
+.criteria-card {
+    border: 1px solid #ddd;
+    padding: 12px;
+    border-radius: 6px;
+}
+.criteria-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 4px;
+}
+.criteria-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.criteria-pts {
+    font-size: 11px;
+    color: #333;
+    line-height: 1.9;
+}
+.criteria-note {
+    font-size: 10px;
+    color: #888;
+    margin-top: 6px;
+}
+.footer {
+    font-size: 11px;
+    color: #999;
+    margin-top: 20px;
+    line-height: 2.2;
+    border-top: 1px solid #eee;
+    padding-top: 16px;
+}
+
+@media (max-width: 600px) {
+    body { padding: 16px 12px; font-size: 13px; }
+    h1 { font-size: 16px; }
+    .criteria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .criteria:last-child { grid-column: span 2; }
+    .section-title { font-size: 13px; padding: 10px 12px; }
+    .section-note { font-size: 10px; }
+    thead th { font-size: 10px; padding: 7px 8px; }
+    tbody td { padding: 10px 8px; font-size: 12px; }
+    .score-total { font-size: 14px; }
+    .footer { font-size: 10px; }
+}
+</style>
+</head>
+<body>
+<div style="font-size:13px;color:#555;margin-bottom:20px;">
+  <a href="../../archive/index.html" style="color:#1a56db;text-decoration:none;">アーカイブ</a>
+  &nbsp;|&nbsp;
+  <a href="../../trends.html" style="color:#1a56db;text-decoration:none;">推移グラフ</a>
+</div>
+  <h1>ポケカ PSA10投資レポート</h1>
+  <div class="subtitle">2026年05月03日 ／ pokeca-chart × Snkrdunk</div>
+
+  <div class="criteria">
+        <div class="criteria-card">
+          <div class="criteria-label">指標 A　30点</div>
+          <div class="criteria-title">PSA10差額</div>
+          <div class="criteria-note">利益ポテンシャル</div>
+          <div class="criteria-pts">≥¥300k: 30点<br>≥¥100k: 25点<br>≥¥50k: 20点<br>≥¥20k: 15点<br>≥¥10k: 10点<br>≥¥5k: 5点</div>
+          
+        </div>
+        <div class="criteria-card">
+          <div class="criteria-label">指標 B　25点</div>
+          <div class="criteria-title">ROI</div>
+          <div class="criteria-note">投資収益率</div>
+          <div class="criteria-pts">≥150%: 25点<br>≥100%: 21点<br>≥50%: 16点<br>≥20%: 11点<br>≥0%: 6点<br>マイナス: 0点</div>
+          
+        </div>
+        <div class="criteria-card">
+          <div class="criteria-label">指標 C　20点</div>
+          <div class="criteria-title">A素体希少性</div>
+          <div class="criteria-note">出品中のみ</div>
+          <div class="criteria-pts">≤5件: 20点<br>≤15件: 16点<br>≤30件: 12点<br>≤100件: 8点<br>≤200件: 4点<br>200件超: 0点</div>
+          <div class="criteria-note">※ 今日仕入れられる実数</div>
+        </div>
+        <div class="criteria-card">
+          <div class="criteria-label">指標 D　15点</div>
+          <div class="criteria-title">PSA10流動性</div>
+          <div class="criteria-note">売り切れ含む累計</div>
+          <div class="criteria-pts">200〜499件: 15点<br>500〜999件: 12点<br>50〜199件: 10点<br>1000〜1999件: 7点<br>＜50件: 4点<br>≥2000件: 3点</div>
+          <div class="criteria-note">※ 多すぎは競合過多で減点</div>
+        </div>
+        <div class="criteria-card">
+          <div class="criteria-label">指標 E　10点</div>
+          <div class="criteria-title">注目トレンド</div>
+          <div class="criteria-note">pokecaランク</div>
+          <div class="criteria-pts">1〜10位: 10点<br>11〜20位: 8点<br>21〜30位: 6点<br>31〜50位: 4点<br>51〜70位: 2点<br>71位以降: 0点</div>
+          
+        </div></div>
+  
+    <div class="section">
+      <div class="section-title">【１】投資効率ランキング TOP30</div>
+      <div class="section-note">ROI順 ／ 期待利益は予算¥100万・PSA10獲得率60%・グレード費¥12,000想定</div>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>カード名</th>
+            <th class="num">ROI</th>
+            <th class="num">差額</th>
+            <th class="num">期待利益</th>
+            <th class="num">美品</th>
+            <th class="num">PSA10</th>
+            <th class="num">A在庫<small>(累計)</small></th>
+            <th class="num">PSA10在庫<small>(累計)</small></th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr class="top3">
+          <td class="rank num">1</td>
+          <td class="name medal-1">ピカチュウ [SV4a 236/190]</td>
+          <td class="num roi-pos">+293%</td>
+          <td class="num">¥69,172</td>
+          <td class="num">¥162万</td>
+          <td class="num">¥7,500</td>
+          <td class="num">¥76,672</td>
+          <td class="num">38<small>(525)</small></td>
+          <td class="num">49<small>(1719)</small></td>
+        </tr>
+        <tr class="top3">
+          <td class="rank num">2</td>
+          <td class="name medal-2">サーナイトEX [CP3 019/032]</td>
+          <td class="num roi-pos">+256%</td>
+          <td class="num">¥145,266</td>
+          <td class="num">¥171万</td>
+          <td class="num">¥40,000</td>
+          <td class="num">¥185,266</td>
+          <td class="num">1<small>(8)</small></td>
+          <td class="num">25<small>(277)</small></td>
+        </tr>
+        <tr class="top3">
+          <td class="rank num">3</td>
+          <td class="name medal-3">レッドのピカチュウ [270/SM-P]</td>
+          <td class="num roi-pos">+229%</td>
+          <td class="num">¥142,714</td>
+          <td class="num">¥125万</td>
+          <td class="num">¥45,000</td>
+          <td class="num">¥187,714</td>
+          <td class="num">---</td>
+          <td class="num">---</td>
+        </tr>
+        <tr class="">
+          <td class="rank num">4</td>
+          <td class="name">ゲンガー&ミミッキュGX [SM9 103/095]</td>
+          <td class="num roi-pos">+147%</td>
+          <td class="num">¥360,000</td>
+          <td class="num">¥81万</td>
+          <td class="num">¥225,000</td>
+          <td class="num">¥585,000</td>
+          <td class="num">---</td>
+          <td class="num">---</td>
+        </tr>
+        <tr class="">
+          <td class="rank num">5</td>
+          <td class="name">Pikachu with Grey Felt Hat [SVP EN 085]</td>
+          <td class="num roi-pos">+140%</td>
+          <td class="num">¥309,501</td>
+          <td class="num">¥79万</td>
+          <td class="num">¥199,999</td>
+          <td class="num">¥509,500</td>
+          <td class="num">27<small>(3213)</small></td>
+          <td class="num">71<small>(2225)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">6</td>
+          <td class="name">ブルーの探索 [SM12a 196/173]</td>
+          <td class="num roi-pos">+128%</td>
+          <td class="num">¥86,001</td>
+          <td class="num">¥80万</td>
+          <td class="num">¥45,999</td>
+          <td class="num">¥132,000</td>
+          <td class="num">6<small>(88)</small></td>
+          <td class="num">20<small>(589)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">7</td>
+          <td class="name">ミュウツーV [s10b 074/071]</td>
+          <td class="num roi-pos">+119%</td>
+          <td class="num">¥41,834</td>
+          <td class="num">¥58万</td>
+          <td class="num">¥13,166</td>
+          <td class="num">¥55,000</td>
+          <td class="num">12<small>(296)</small></td>
+          <td class="num">46<small>(1077)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">8</td>
+          <td class="name">メガカイリューex [M2a 250/193]</td>
+          <td class="num roi-pos">+116%</td>
+          <td class="num">¥83,801</td>
+          <td class="num">¥66万</td>
+          <td class="num">¥49,999</td>
+          <td class="num">¥133,800</td>
+          <td class="num">98<small>(967)</small></td>
+          <td class="num">54<small>(580)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">9</td>
+          <td class="name">メガルカリオex [M1L 092/063]</td>
+          <td class="num roi-pos">+113%</td>
+          <td class="num">¥97,000</td>
+          <td class="num">¥69万</td>
+          <td class="num">¥63,000</td>
+          <td class="num">¥160,000</td>
+          <td class="num">16<small>(252)</small></td>
+          <td class="num">34<small>(528)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">10</td>
+          <td class="name">エーフィGX [SM8b 220/150]</td>
+          <td class="num roi-pos">+105%</td>
+          <td class="num">¥43,000</td>
+          <td class="num">¥54万</td>
+          <td class="num">¥17,500</td>
+          <td class="num">¥60,500</td>
+          <td class="num">3<small>(19)</small></td>
+          <td class="num">14<small>(91)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">11</td>
+          <td class="name">ニンフィアGX [SM8b 238/150]</td>
+          <td class="num roi-pos">+105%</td>
+          <td class="num">¥55,500</td>
+          <td class="num">¥61万</td>
+          <td class="num">¥29,500</td>
+          <td class="num">¥85,000</td>
+          <td class="num">2<small>(58)</small></td>
+          <td class="num">12<small>(317)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">12</td>
+          <td class="name">メイのはげまし [M3 107/080]</td>
+          <td class="num roi-pos">+105%</td>
+          <td class="num">¥27,342</td>
+          <td class="num">¥34万</td>
+          <td class="num">¥2,658</td>
+          <td class="num">¥30,000</td>
+          <td class="num">18<small>(343)</small></td>
+          <td class="num">4<small>(50)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">13</td>
+          <td class="name">バンギラスV [S5I 077/070]</td>
+          <td class="num roi-pos">+103%</td>
+          <td class="num">¥53,100</td>
+          <td class="num">¥49万</td>
+          <td class="num">¥28,000</td>
+          <td class="num">¥81,100</td>
+          <td class="num">---</td>
+          <td class="num">---</td>
+        </tr>
+        <tr class="">
+          <td class="rank num">14</td>
+          <td class="name">メガジガルデex [M3 117/080]</td>
+          <td class="num roi-pos">+102%</td>
+          <td class="num">¥60,000</td>
+          <td class="num">¥54万</td>
+          <td class="num">¥35,000</td>
+          <td class="num">¥95,000</td>
+          <td class="num">32<small>(209)</small></td>
+          <td class="num">34<small>(174)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">15</td>
+          <td class="name">ミュウex [SV2a 208/165]</td>
+          <td class="num roi-pos">+97%</td>
+          <td class="num">¥36,200</td>
+          <td class="num">¥41万</td>
+          <td class="num">¥13,000</td>
+          <td class="num">¥49,200</td>
+          <td class="num">39<small>(556)</small></td>
+          <td class="num">72<small>(904)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">16</td>
+          <td class="name">ヒロシマのピカチュウ [261/SV-P]</td>
+          <td class="num roi-pos">+90%</td>
+          <td class="num">¥51,452</td>
+          <td class="num">¥42万</td>
+          <td class="num">¥32,000</td>
+          <td class="num">¥83,452</td>
+          <td class="num">101<small>(1834)</small></td>
+          <td class="num">68<small>(1490)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">17</td>
+          <td class="name">ルカリオVSTAR [S12a 226/172]</td>
+          <td class="num roi-pos">+86%</td>
+          <td class="num">¥26,610</td>
+          <td class="num">¥24万</td>
+          <td class="num">¥5,022</td>
+          <td class="num">¥31,632</td>
+          <td class="num">32<small>(391)</small></td>
+          <td class="num">34<small>(972)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">18</td>
+          <td class="name">ヒビキのホウオウex [sv9a 090/063]</td>
+          <td class="num roi-pos">+77%</td>
+          <td class="num">¥24,200</td>
+          <td class="num">¥19万</td>
+          <td class="num">¥3,800</td>
+          <td class="num">¥28,000</td>
+          <td class="num">1<small>(77)</small></td>
+          <td class="num">24<small>(119)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">19</td>
+          <td class="name">リザードンex [SV3 139/108]</td>
+          <td class="num roi-pos">+76%</td>
+          <td class="num">¥30,600</td>
+          <td class="num">¥29万</td>
+          <td class="num">¥12,400</td>
+          <td class="num">¥43,000</td>
+          <td class="num">25<small>(379)</small></td>
+          <td class="num">60<small>(762)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">20</td>
+          <td class="name">リザードンEX [276/XY-P]</td>
+          <td class="num roi-pos">+71%</td>
+          <td class="num">¥490,000</td>
+          <td class="num">¥28万</td>
+          <td class="num">¥660,000</td>
+          <td class="num">¥1,150,000</td>
+          <td class="num">---</td>
+          <td class="num">---</td>
+        </tr>
+        <tr class="">
+          <td class="rank num">21</td>
+          <td class="name">リザードンex [SV3 134/108]</td>
+          <td class="num roi-pos">+69%</td>
+          <td class="num">¥51,501</td>
+          <td class="num">¥38万</td>
+          <td class="num">¥44,999</td>
+          <td class="num">¥96,500</td>
+          <td class="num">10<small>(742)</small></td>
+          <td class="num">97<small>(2815)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">22</td>
+          <td class="name">メガリザードンXex [M2a 223/193]</td>
+          <td class="num roi-pos">+68%</td>
+          <td class="num">¥26,133</td>
+          <td class="num">¥17万</td>
+          <td class="num">¥8,900</td>
+          <td class="num">¥35,033</td>
+          <td class="num">331<small>(4122)</small></td>
+          <td class="num">127<small>(1924)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">23</td>
+          <td class="name">エーフィV [S6a 081/069]</td>
+          <td class="num roi-pos">+64%</td>
+          <td class="num">¥31,862</td>
+          <td class="num">¥27万</td>
+          <td class="num">¥18,888</td>
+          <td class="num">¥50,750</td>
+          <td class="num">9<small>(178)</small></td>
+          <td class="num">40<small>(1085)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">24</td>
+          <td class="name">ピカチュウ [S10a 073/071]</td>
+          <td class="num roi-pos">+63%</td>
+          <td class="num">¥23,670</td>
+          <td class="num">¥13万</td>
+          <td class="num">¥6,412</td>
+          <td class="num">¥30,082</td>
+          <td class="num">42<small>(1005)</small></td>
+          <td class="num">151<small>(3355)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">25</td>
+          <td class="name">ゼラオラV [S6K 074/070]</td>
+          <td class="num roi-pos">+62%</td>
+          <td class="num">¥26,562</td>
+          <td class="num">¥19万</td>
+          <td class="num">¥11,438</td>
+          <td class="num">¥38,000</td>
+          <td class="num">2<small>(37)</small></td>
+          <td class="num">12<small>(266)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">26</td>
+          <td class="name">ブラッキー(マスターボールミラー) [sv8a 092/187]</td>
+          <td class="num roi-pos">+52%</td>
+          <td class="num">¥26,642</td>
+          <td class="num">¥16万</td>
+          <td class="num">¥16,185</td>
+          <td class="num">¥42,827</td>
+          <td class="num">15<small>(607)</small></td>
+          <td class="num">117<small>(2000)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">27</td>
+          <td class="name">ピカチュウex [WCS23 001/030]</td>
+          <td class="num roi-pos">+46%</td>
+          <td class="num">¥50,000</td>
+          <td class="num">¥21万</td>
+          <td class="num">¥70,000</td>
+          <td class="num">¥120,000</td>
+          <td class="num">---</td>
+          <td class="num">---</td>
+        </tr>
+        <tr class="">
+          <td class="rank num">28</td>
+          <td class="name">ピカチュウex [M2a 234/193]</td>
+          <td class="num roi-pos">+45%</td>
+          <td class="num">¥46,458</td>
+          <td class="num">¥21万</td>
+          <td class="num">¥64,350</td>
+          <td class="num">¥110,808</td>
+          <td class="num">189<small>(2324)</small></td>
+          <td class="num">115<small>(1967)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">29</td>
+          <td class="name">ベルのまごころ [SV5M 097/071]</td>
+          <td class="num roi-pos">+45%</td>
+          <td class="num">¥20,334</td>
+          <td class="num">¥1万</td>
+          <td class="num">¥6,666</td>
+          <td class="num">¥27,000</td>
+          <td class="num">22<small>(261)</small></td>
+          <td class="num">25<small>(507)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">30</td>
+          <td class="name">エリカの招待 [SV2a 206/165]</td>
+          <td class="num roi-pos">+42%</td>
+          <td class="num">¥21,666</td>
+          <td class="num">¥4万</td>
+          <td class="num">¥11,000</td>
+          <td class="num">¥32,666</td>
+          <td class="num">40<small>(868)</small></td>
+          <td class="num">38<small>(1515)</small></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </div>
+  
+    <div class="section">
+      <div class="section-title">【２】総合評価ランキング TOP30</div>
+      <div class="section-note">A:差額30 + B:ROI25 + C:希少性20 + D:流動性15 + E:トレンド10 = 100点満点　／　スコア列はA/B/C/D/E内訳</div>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>カード名</th>
+            <th class="num">総合</th>
+            <th class="num">A/B/C/D/E</th>
+            <th class="num">ROI</th>
+            <th class="num">差額</th>
+            <th class="num">美品</th>
+            <th class="num">PSA10</th>
+            <th class="num">A在庫<small>(累計)</small></th>
+            <th class="num">PSA10在庫<small>(累計)</small></th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr class="top3">
+          <td class="rank num">1</td>
+          <td class="name medal-1">サーナイトEX [CP3 019/032]</td>
+          <td class="num score-total">95点</td>
+          <td class="num score-cell">25/25/20/15/10</td>
+          <td class="num roi-pos">+256%</td>
+          <td class="num">¥145,266</td>
+          <td class="num">¥40,000</td>
+          <td class="num">¥185,266</td>
+          <td class="num">1<small>(8)</small></td>
+          <td class="num">25<small>(277)</small></td>
+        </tr>
+        <tr class="top3">
+          <td class="rank num">2</td>
+          <td class="name medal-2">ニンフィアGX [SM8b 238/150]</td>
+          <td class="num score-total">82点</td>
+          <td class="num score-cell">20/21/20/15/6</td>
+          <td class="num roi-pos">+105%</td>
+          <td class="num">¥55,500</td>
+          <td class="num">¥29,500</td>
+          <td class="num">¥85,000</td>
+          <td class="num">2<small>(58)</small></td>
+          <td class="num">12<small>(317)</small></td>
+        </tr>
+        <tr class="top3">
+          <td class="rank num">3</td>
+          <td class="name medal-3">Pikachu with Grey Felt Hat [SVP EN 085]</td>
+          <td class="num score-total">76点</td>
+          <td class="num score-cell">30/21/12/3/10</td>
+          <td class="num roi-pos">+140%</td>
+          <td class="num">¥309,501</td>
+          <td class="num">¥199,999</td>
+          <td class="num">¥509,500</td>
+          <td class="num">27<small>(3213)</small></td>
+          <td class="num">71<small>(2225)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">4</td>
+          <td class="name">ゼラオラV [S6K 074/070]</td>
+          <td class="num score-total">74点</td>
+          <td class="num score-cell">15/16/20/15/8</td>
+          <td class="num roi-pos">+62%</td>
+          <td class="num">¥26,562</td>
+          <td class="num">¥11,438</td>
+          <td class="num">¥38,000</td>
+          <td class="num">2<small>(37)</small></td>
+          <td class="num">12<small>(266)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">5</td>
+          <td class="name">メガルカリオex [M1L 092/063]</td>
+          <td class="num score-total">73点</td>
+          <td class="num score-cell">20/21/12/12/8</td>
+          <td class="num roi-pos">+113%</td>
+          <td class="num">¥97,000</td>
+          <td class="num">¥63,000</td>
+          <td class="num">¥160,000</td>
+          <td class="num">16<small>(252)</small></td>
+          <td class="num">34<small>(528)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">6</td>
+          <td class="name">ゲンガー&ミミッキュGX [SM9 103/095]</td>
+          <td class="num score-total">69点</td>
+          <td class="num score-cell">30/21/5/5/8</td>
+          <td class="num roi-pos">+147%</td>
+          <td class="num">¥360,000</td>
+          <td class="num">¥225,000</td>
+          <td class="num">¥585,000</td>
+          <td class="num">---</td>
+          <td class="num">---</td>
+        </tr>
+        <tr class="">
+          <td class="rank num">7</td>
+          <td class="name">ブルーの探索 [SM12a 196/173]</td>
+          <td class="num score-total">69点</td>
+          <td class="num score-cell">20/21/16/12/0</td>
+          <td class="num roi-pos">+128%</td>
+          <td class="num">¥86,001</td>
+          <td class="num">¥45,999</td>
+          <td class="num">¥132,000</td>
+          <td class="num">6<small>(88)</small></td>
+          <td class="num">20<small>(589)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">8</td>
+          <td class="name">レッドのピカチュウ [270/SM-P]</td>
+          <td class="num score-total">68点</td>
+          <td class="num score-cell">25/25/5/5/8</td>
+          <td class="num roi-pos">+229%</td>
+          <td class="num">¥142,714</td>
+          <td class="num">¥45,000</td>
+          <td class="num">¥187,714</td>
+          <td class="num">---</td>
+          <td class="num">---</td>
+        </tr>
+        <tr class="">
+          <td class="rank num">9</td>
+          <td class="name">ピカチュウ [SV4a 236/190]</td>
+          <td class="num score-total">68点</td>
+          <td class="num score-cell">20/25/8/7/8</td>
+          <td class="num roi-pos">+293%</td>
+          <td class="num">¥69,172</td>
+          <td class="num">¥7,500</td>
+          <td class="num">¥76,672</td>
+          <td class="num">38<small>(525)</small></td>
+          <td class="num">49<small>(1719)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">10</td>
+          <td class="name">エーフィGX [SM8b 220/150]</td>
+          <td class="num score-total">66点</td>
+          <td class="num score-cell">15/21/20/10/0</td>
+          <td class="num roi-pos">+105%</td>
+          <td class="num">¥43,000</td>
+          <td class="num">¥17,500</td>
+          <td class="num">¥60,500</td>
+          <td class="num">3<small>(19)</small></td>
+          <td class="num">14<small>(91)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">11</td>
+          <td class="name">リザードンex [SV3 134/108]</td>
+          <td class="num score-total">65点</td>
+          <td class="num score-cell">20/16/16/3/10</td>
+          <td class="num roi-pos">+69%</td>
+          <td class="num">¥51,501</td>
+          <td class="num">¥44,999</td>
+          <td class="num">¥96,500</td>
+          <td class="num">10<small>(742)</small></td>
+          <td class="num">97<small>(2815)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">12</td>
+          <td class="name">リザードンex [SV3 139/108]</td>
+          <td class="num score-total">65点</td>
+          <td class="num score-cell">15/16/12/12/10</td>
+          <td class="num roi-pos">+76%</td>
+          <td class="num">¥30,600</td>
+          <td class="num">¥12,400</td>
+          <td class="num">¥43,000</td>
+          <td class="num">25<small>(379)</small></td>
+          <td class="num">60<small>(762)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">13</td>
+          <td class="name">ゼクロムex [sv11B 169/086]</td>
+          <td class="num score-total">64点</td>
+          <td class="num score-cell">15/11/16/12/10</td>
+          <td class="num roi-pos">+28%</td>
+          <td class="num">¥22,325</td>
+          <td class="num">¥24,500</td>
+          <td class="num">¥46,825</td>
+          <td class="num">12<small>(420)</small></td>
+          <td class="num">60<small>(942)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">14</td>
+          <td class="name">メガカイリューex [M2a 250/193]</td>
+          <td class="num score-total">61点</td>
+          <td class="num score-cell">20/21/8/12/0</td>
+          <td class="num roi-pos">+116%</td>
+          <td class="num">¥83,801</td>
+          <td class="num">¥49,999</td>
+          <td class="num">¥133,800</td>
+          <td class="num">98<small>(967)</small></td>
+          <td class="num">54<small>(580)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">15</td>
+          <td class="name">メガジガルデex [M3 117/080]</td>
+          <td class="num score-total">61点</td>
+          <td class="num score-cell">20/21/8/10/2</td>
+          <td class="num roi-pos">+102%</td>
+          <td class="num">¥60,000</td>
+          <td class="num">¥35,000</td>
+          <td class="num">¥95,000</td>
+          <td class="num">32<small>(209)</small></td>
+          <td class="num">34<small>(174)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">16</td>
+          <td class="name">ミュウツーV [s10b 074/071]</td>
+          <td class="num score-total">61点</td>
+          <td class="num score-cell">15/21/16/7/2</td>
+          <td class="num roi-pos">+119%</td>
+          <td class="num">¥41,834</td>
+          <td class="num">¥13,166</td>
+          <td class="num">¥55,000</td>
+          <td class="num">12<small>(296)</small></td>
+          <td class="num">46<small>(1077)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">17</td>
+          <td class="name">ルカリオVSTAR [S12a 226/172]</td>
+          <td class="num score-total">61点</td>
+          <td class="num score-cell">15/16/8/12/10</td>
+          <td class="num roi-pos">+86%</td>
+          <td class="num">¥26,610</td>
+          <td class="num">¥5,022</td>
+          <td class="num">¥31,632</td>
+          <td class="num">32<small>(391)</small></td>
+          <td class="num">34<small>(972)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">18</td>
+          <td class="name">ヒビキのホウオウex [sv9a 090/063]</td>
+          <td class="num score-total">61点</td>
+          <td class="num score-cell">15/16/20/10/0</td>
+          <td class="num roi-pos">+77%</td>
+          <td class="num">¥24,200</td>
+          <td class="num">¥3,800</td>
+          <td class="num">¥28,000</td>
+          <td class="num">1<small>(77)</small></td>
+          <td class="num">24<small>(119)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">19</td>
+          <td class="name">メイのはげまし [M3 107/080]</td>
+          <td class="num score-total">60点</td>
+          <td class="num score-cell">15/21/12/10/2</td>
+          <td class="num roi-pos">+105%</td>
+          <td class="num">¥27,342</td>
+          <td class="num">¥2,658</td>
+          <td class="num">¥30,000</td>
+          <td class="num">18<small>(343)</small></td>
+          <td class="num">4<small>(50)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">20</td>
+          <td class="name">ラティアス [SV7a 087/064]</td>
+          <td class="num score-total">60点</td>
+          <td class="num score-cell">15/11/20/12/2</td>
+          <td class="num roi-pos">+39%</td>
+          <td class="num">¥25,478</td>
+          <td class="num">¥22,222</td>
+          <td class="num">¥47,700</td>
+          <td class="num">4<small>(126)</small></td>
+          <td class="num">19<small>(586)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">21</td>
+          <td class="name">メガルカリオex [M1L 088/063]</td>
+          <td class="num score-total">59点</td>
+          <td class="num score-cell">15/11/16/7/10</td>
+          <td class="num roi-pos">+39%</td>
+          <td class="num">¥20,994</td>
+          <td class="num">¥10,906</td>
+          <td class="num">¥31,900</td>
+          <td class="num">11<small>(697)</small></td>
+          <td class="num">83<small>(1529)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">22</td>
+          <td class="name">パラソルおねえさん [sv3a 089/062]</td>
+          <td class="num score-total">58点</td>
+          <td class="num score-cell">10/11/16/15/6</td>
+          <td class="num roi-pos">+38%</td>
+          <td class="num">¥19,500</td>
+          <td class="num">¥7,500</td>
+          <td class="num">¥27,000</td>
+          <td class="num">9<small>(345)</small></td>
+          <td class="num">19<small>(450)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">23</td>
+          <td class="name">リザードンEX [276/XY-P]</td>
+          <td class="num score-total">56点</td>
+          <td class="num score-cell">30/16/5/5/0</td>
+          <td class="num roi-pos">+71%</td>
+          <td class="num">¥490,000</td>
+          <td class="num">¥660,000</td>
+          <td class="num">¥1,150,000</td>
+          <td class="num">---</td>
+          <td class="num">---</td>
+        </tr>
+        <tr class="">
+          <td class="rank num">24</td>
+          <td class="name">ミュウex [SV2a 208/165]</td>
+          <td class="num score-total">55点</td>
+          <td class="num score-cell">15/16/8/12/4</td>
+          <td class="num roi-pos">+97%</td>
+          <td class="num">¥36,200</td>
+          <td class="num">¥13,000</td>
+          <td class="num">¥49,200</td>
+          <td class="num">39<small>(556)</small></td>
+          <td class="num">72<small>(904)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">25</td>
+          <td class="name">エーフィV [S6a 081/069]</td>
+          <td class="num score-total">54点</td>
+          <td class="num score-cell">15/16/16/7/0</td>
+          <td class="num roi-pos">+64%</td>
+          <td class="num">¥31,862</td>
+          <td class="num">¥18,888</td>
+          <td class="num">¥50,750</td>
+          <td class="num">9<small>(178)</small></td>
+          <td class="num">40<small>(1085)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">26</td>
+          <td class="name">ベルのまごころ [SV5M 097/071]</td>
+          <td class="num score-total">54点</td>
+          <td class="num score-cell">15/11/12/12/4</td>
+          <td class="num roi-pos">+45%</td>
+          <td class="num">¥20,334</td>
+          <td class="num">¥6,666</td>
+          <td class="num">¥27,000</td>
+          <td class="num">22<small>(261)</small></td>
+          <td class="num">25<small>(507)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">27</td>
+          <td class="name">ヒビキのホウオウex [sv9a 086/063]</td>
+          <td class="num score-total">54点</td>
+          <td class="num score-cell">10/6/16/12/10</td>
+          <td class="num roi-pos">+9%</td>
+          <td class="num">¥15,750</td>
+          <td class="num">¥31,250</td>
+          <td class="num">¥47,000</td>
+          <td class="num">6<small>(250)</small></td>
+          <td class="num">36<small>(770)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">28</td>
+          <td class="name">バンギラスV [S5I 077/070]</td>
+          <td class="num score-total">53点</td>
+          <td class="num score-cell">20/21/5/5/2</td>
+          <td class="num roi-pos">+103%</td>
+          <td class="num">¥53,100</td>
+          <td class="num">¥28,000</td>
+          <td class="num">¥81,100</td>
+          <td class="num">---</td>
+          <td class="num">---</td>
+        </tr>
+        <tr class="">
+          <td class="rank num">29</td>
+          <td class="name">ヒロシマのピカチュウ [261/SV-P]</td>
+          <td class="num score-total">53点</td>
+          <td class="num score-cell">20/16/4/7/6</td>
+          <td class="num roi-pos">+90%</td>
+          <td class="num">¥51,452</td>
+          <td class="num">¥32,000</td>
+          <td class="num">¥83,452</td>
+          <td class="num">101<small>(1834)</small></td>
+          <td class="num">68<small>(1490)</small></td>
+        </tr>
+        <tr class="">
+          <td class="rank num">30</td>
+          <td class="name">カリンの信念 [S5a 081/070]</td>
+          <td class="num score-total">53点</td>
+          <td class="num score-cell">10/6/20/15/2</td>
+          <td class="num roi-pos">+3%</td>
+          <td class="num">¥12,382</td>
+          <td class="num">¥2,140</td>
+          <td class="num">¥14,522</td>
+          <td class="num">4<small>(47)</small></td>
+          <td class="num">19<small>(232)</small></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </div>
+
+  <div class="footer">
+    ※ A在庫: 出品中のみ（括弧内は売り切れ含む累計）<br>
+    ※ PSA10在庫: 出品中のみ（括弧内は売り切れ含む累計）<br>
+    ※ C希少性スコア = A素体出品中のみ　／　D流動性スコア = PSA10売り切れ含む累計<br>
+    ※ データ未取得項目は C・D ともに 5点（中間値）で補完
+  </div>
+</body>
+</html>
